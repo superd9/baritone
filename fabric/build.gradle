@@ -76,22 +76,10 @@ components.java {
     }
 }
 
-task proguard(type: ProguardTask) {
-    url 'https://github.com/Guardsquare/proguard/releases/download/v7.2.1/proguard-7.2.1.zip'
-    extract 'proguard-7.2.1/lib/proguard.jar'
-    compType "fabric"
-}
-
-task createDist(type: CreateDistTask, dependsOn: proguard) {
-    compType "fabric"
-}
-
-build.finalizedBy(createDist)
-
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact "../dist/baritone-api-fabric-" + version + ".jar"
+            artifact "../dist/baritone-api-" + version + ".jar"
         }
     }
 
